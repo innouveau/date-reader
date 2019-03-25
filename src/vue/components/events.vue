@@ -31,5 +31,11 @@
     .events {
         width: 450px;
         padding: 20px;
+        min-height: 250px;
+
+        @media (max-width: 768px) {
+            width: 100%;
+            padding: 20px 0;
+        }
     }
 </style>

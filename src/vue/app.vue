@@ -54,6 +54,11 @@
         width: 750px;
         display: flex;
 
+        @media (max-width: 768px) {
+            display: block;
+            width: 100%;
+        }
+
         .datereader__container {
             border: 1px solid #ddd;
             width: 300px;
