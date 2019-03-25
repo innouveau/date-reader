@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Datepicker</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat';
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+        window.datereaderEvents = [{
+            date: '2019-03-08',
+            event: {
+                'title': 'Praktijkopleidersdag Noord-Holland',
+                'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin purus eros, sollicitudin nec bibendum id, tristique ac risus.',
+                'url': '/post-1'
+
+            }
+        }, {
+            date: '2019-03-20',
+            event: {
+                'title': 'Meetup 14',
+                'description': 'Lorem ipsum dolor sit amet, consectetur bibendum id, tristique ac risus.',
+                'url': '/post-3'
+
+            }
+        }, {
+            date: '2019-04-16',
+            event: {
+                'title': 'Heel Holland Bakt',
+                'description': 'Morbi luctus magna at blandit volutpat. Integer sit amet dictum mauris, ac tincidunt ante.',
+                'url': '/post-2'
+            }
+        }];
+    </script>
+    <div id="datereader" days="365"></div>
+    <script src="datereader.js"></script>
+</body>
+</html>
