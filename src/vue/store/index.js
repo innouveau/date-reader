@@ -74,8 +74,12 @@ const mutations = {
 
 
             for (let d = 0; d < daysInMonth; d++) {
+                let date, dayOfTheWeek;
+                date = new Date(year + '/' + (month + 1) + '/' + (d + 1));
+                dayOfTheWeek = getDay(date);
                 theMonth.days.push({
-                    date: new Date(year + '/' + (month + 1) + '/' + (d + 1)),
+                    date: date,
+                    weekend: dayOfTheWeek === 6 || dayOfTheWeek === 0,
                     day: (d+1),
                     event: null
                 })

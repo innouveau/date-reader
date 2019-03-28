@@ -18,7 +18,7 @@
         },
         data() {
             return {
-                weekDays: ['M', 'D', 'W', 'D', 'V', 'Z', 'Z']
+                weekDays: ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo']
             }
         }
     }
@@ -27,17 +27,15 @@
 
 <template>
     <div class="month">
-        <div class="month__label">
-            {{month.monthName}} {{month.year}}
-        </div>
         <div class="week">
             <div
-                v-for="d in weekDays"
+                v-for="(d, index) in weekDays"
+                :class="{'week_day--weekend': index > 4}"
                 class="week__day">{{d}}</div>
         </div>
         <div class="month__days">
             <div
-                :style="{'width': (month.dayOfTheWeekOfFirst * 40) + 'px'}"
+                :style="{'width': (month.dayOfTheWeekOfFirst * 55) + 'px'}"
                 class="spacer"></div>
             <day
                 v-for="(day, index) in month.days"
@@ -50,27 +48,24 @@
 
 <style lang="scss">
     .month {
-        width: 300px;
-        padding: 10px;
-
-        .month__label {
-            margin-bottom: 4px;
-            text-align: center;
-        }
+        width: 386px;
+        margin-right: 10px;
 
         .week {
             display: flex;
 
             .week__day {
-                width: 38px;
-                height: 38px;
+                width: 56px;
+                height: 53px;
                 margin: 1px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: #555;
                 cursor: default;
-                font-size: 10px;
+
+                &.week_day--weekend {
+                    color: #BEBEBE;
+                }
             }
         }
 

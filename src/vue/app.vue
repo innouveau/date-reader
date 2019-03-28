@@ -16,7 +16,7 @@
                 return this.$store.state.months;
             },
             left() {
-                return -this.$store.state.currentMonthIndex * 300;
+                return -this.$store.state.currentMonthIndex * 396;
             }
         }
     }
@@ -51,8 +51,9 @@
 
     .datereader {
         font-family: inherit;
-        width: 750px;
         display: flex;
+        height: 434px;
+        font-size: 18px;
 
         @media (max-width: 768px) {
             display: block;
@@ -60,13 +61,15 @@
         }
 
         .datereader__container {
-            border: 1px solid #ddd;
-            width: 300px;
-            height: 380px;
+            width: 386px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            margin-right: 94px;
+            height: 374px;
 
             .month__container {
                 position: relative;
-                height: 320px;
+                height: 100%;
                 overflow: hidden;
 
                 .months__slider {

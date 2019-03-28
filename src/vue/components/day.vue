@@ -13,6 +13,9 @@
         computed: {
             hasEvent() {
                 return this.day.event;
+            },
+            isWeekend() {
+                return this.day.weekend;
             }
         },
         methods: {
@@ -28,7 +31,10 @@
 <template>
     <div
         @click="selectDay()"
-        :class="{'day--with-event': hasEvent}"
+        :class="{
+            'day--with-event': hasEvent,
+            'day--weekend': isWeekend
+        }"
          class="day">{{day.day}}</div>
 </template>
 
@@ -37,18 +43,25 @@
     @import '@styles/variables.scss';
 
     .day {
-        width: 38px;
-        height: 38px;
-        background: #ddd;
-        margin: 1px;
+        width: 56px;
+        height: 54px;
+        background: #fff;
+        border: $table-border;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: default;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        font-weight: 700;
 
         .tiny {
             font-size: 8px;
             margin-left: 2px;
+        }
+
+        &.day--weekend {
+            background: #E6E6E6;
         }
 
         &.day--with-event {

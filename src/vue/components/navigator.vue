@@ -10,6 +10,9 @@
             },
             canSlideNext() {
                 return this.$store.state.currentMonthIndex < (this.$store.state.totalMonths - 1);
+            },
+            month() {
+                return this.$store.state.months[this.$store.state.currentMonthIndex];
             }
         },
         methods: {
@@ -30,19 +33,17 @@
 
 <template>
     <div class="navigator">
-        <div class="navigator__tools">
-            <div
-                @click="prevMonth()"
-                :class="{'navigator__tool--disabled': !canSlidePrev}"
-                class="navigator__tool">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div
-                @click="nextMonth()"
-                :class="{'navigator__tool--disabled': !canSlideNext}"
-                class="navigator__tool">
-                <i class="fas fa-arrow-right"></i>
-            </div>
+        <div
+            @click="prevMonth()"
+            :class="{'navigator__tool--disabled': !canSlidePrev}"
+            class="navigator__tool navigator__tool--left"></div>
+        <div
+            @click="nextMonth()"
+            :class="{'navigator__tool--disabled': !canSlideNext}"
+            class="navigator__tool navigator__tool--right"></div>
+
+        <div class="month__label">
+            {{month.monthName}} {{month.year}}
         </div>
     </div>
 </template>
@@ -52,48 +53,60 @@
     @import '@styles/variables.scss';
 
     .navigator {
-        padding: 10px;
-        height: 50px;
+        height: 60px;
+        position: relative;
 
-        .navigator__tools {
-            display: flex;
-            align-items: center;
-            height: 100%;
+        .month__label {
+            position: absolute;
+            bottom: 13px;
+            left: 44px;
+            font-size: 28px;
+            font-weight: 700;
+            vertical-align: text-bottom;
+            line-height: 1;
+        }
 
-            .navigator__tool {
-                background: $allowedColor;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                margin-right: 4px;
+        .navigator__tool {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 15px;
+
+            &:after {
+                position: absolute;
+                left: 0;
+                top: 0;
+                content: '';
+                width: 0;
+                height: 0;
+                border-top: 9px solid transparent;
+                border-bottom: 9px solid transparent;
                 cursor: pointer;
+            }
 
-                &.navigator__tool--disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
+            &.navigator__tool--left {
+                left: 0;
+
+                &:after {
+                    border-right: 18px solid #000;
                 }
+            }
 
-                i {
-                    font-size: 26px;
-                    margin-bottom: 3px;
+            &.navigator__tool--right {
+                right: 0;
 
-                    &.fa-arrow-left {
+                &:after {
+                    border-left: 18px solid #000;
+                }
+            }
 
-                        &:after {
-                            content: '←';
-                        }
-                    }
+            &.navigator__tool--disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
 
-                    &.fa-arrow-right {
-
-                        &:after {
-                            content: '→';
-                        }
-                    }
+                &:after {
+                    cursor: not-allowed;
                 }
             }
         }

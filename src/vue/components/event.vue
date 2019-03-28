@@ -38,26 +38,24 @@
     @import '@styles/variables.scss';
 
     .event {
-        padding: 0 20px 10px 20px;
-        border-bottom: 1px solid $mainColor;
-        margin-bottom: 10px;
-        line-height: 1.3;
+        padding: 20px 0;
+        border-bottom: 2px solid #BEBEBE;
+        line-height: 1.625;
 
         .event__date {
-            text-transform: uppercase;
-            font-size: 11px;
+            color: $mainColor;
+            font-weight: 700;
         }
 
         .event__title {
             font-weight: 700;
-            font-size: 17px;
-            margin-bottom: 4px;
         }
 
         .event__description {
+            font-size: 16px;
 
             a {
-                color: #000;
+                color: $mainColor;
             }
         }
     }
