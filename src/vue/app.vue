@@ -25,22 +25,27 @@
 
 <template>
     <div class="datereader">
-        <div
-            class="datereader__container">
-            <navigator></navigator>
-            <div class="month__container">
-                <div
-                        :style="{'left': left + 'px'}"
-                        class="months__slider">
-                    <month
-                        v-for="(month, index) in months"
-                        :month="month"
-                        :key="index"
-                        :month-key="index"></month>
+        <div class="datereader__calendar">
+            <div
+                    class="datereader__container">
+                <navigator></navigator>
+                <div class="month__container">
+                    <div
+                            :style="{'left': left + 'px'}"
+                            class="months__slider">
+                        <month
+                                v-for="(month, index) in months"
+                                :month="month"
+                                :key="index"
+                                :month-key="index"></month>
+                    </div>
                 </div>
             </div>
         </div>
-        <events/>
+
+        <div class="datereader__events">
+            <events/>
+        </div>
     </div>
 </template>
 
@@ -51,41 +56,53 @@
 
     .datereader {
         font-family: inherit;
-        display: flex;
-        height: 434px;
         font-size: 18px;
+        display: flex;
+        justify-content: space-between;
 
-        @media (max-width: 768px) {
-            display: block;
-            width: 100%;
-        }
+        .datereader__calendar {
+            height: 434px;
+            width: calc(50% - 10px);
 
-        .datereader__container {
-            width: 386px;
-            flex-grow: 0;
-            flex-shrink: 0;
-            margin-right: 94px;
-            height: 374px;
-
-            .month__container {
-                position: relative;
+            .datereader__container {
                 height: 100%;
-                overflow: hidden;
+                width: 386px;
 
-                .months__slider {
-                    display: flex;
-                    position: absolute;
-                    top: 0;
-                    transition: left 0.3s ease;
+                .month__container {
+                    position: relative;
+                    height: 100%;
+                    overflow: hidden;
+
+                    .months__slider {
+                        display: flex;
+                        position: absolute;
+                        top: 0;
+                        transition: left 0.3s ease;
+
+                    }
 
                 }
 
+                .feedback {
+                    padding: 10px;
+                    color: #888;
+                    height: 50px;
+                }
             }
+        }
 
-            .feedback {
-                padding: 10px;
-                color: #888;
-                height: 50px;
+        .datereader__events {
+            width: calc(50% - 10px);
+            overflow: auto;
+            height: 434px;
+        }
+
+        @media (max-width: 768px) {
+            display: block;
+
+            .datereader__calendar,
+            .datereader__events {
+                width: 100%;
             }
         }
     }

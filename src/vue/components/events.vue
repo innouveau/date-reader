@@ -29,11 +29,7 @@
     @import '@styles/variables.scss';
 
     .events {
-        width: 450px;
         padding-top: 8px;
-        min-height: 250px;
-        overflow: auto;
-        height: 100%;
 
         @media (max-width: 768px) {
             width: 100%;
