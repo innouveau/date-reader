@@ -26,6 +26,18 @@ const getters = {
     },
     getMonth: (state) => {
         return state.months[state.currentMonthIndex]
+    },
+    getFirstMonthWithEvent: (state) => {
+        let monthIndex = 0;
+        for (let month of state.months) {
+            for (let day of month.days) {
+                if (day.event !== null) {
+                    return monthIndex;
+                }
+            }
+            monthIndex ++
+        }
+        return null;
     }
 };
 
@@ -113,6 +125,9 @@ const mutations = {
     },
     slidePrev(state) {
         state.currentMonthIndex--;
+    },
+    setMonthIndex(state, monthIndex) {
+        state.currentMonthIndex = monthIndex;
     }
 };
 

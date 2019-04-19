@@ -13,10 +13,16 @@ new Vue({
     },
     template: '<app/>',
     beforeMount: function () {
+        let firstMonthIndex;
         store.commit('init');
 
         for (let event of window.datereaderEvents) {
             store.commit('addEvent', event);
+        }
+
+        firstMonthIndex = store.getters['getFirstMonthWithEvent'];
+        if (firstMonthIndex !== null) {
+            store.commit('setMonthIndex', firstMonthIndex)
         }
     }
 });

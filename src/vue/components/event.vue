@@ -19,7 +19,7 @@
 
 
 <template>
-    <div class="event">
+    <a class="event" :href="day.event.url">
         <div class="event__date">
             {{date}}
         </div>
@@ -28,9 +28,9 @@
         </div>
         <div class="event__description">
             {{day.event.description}} (...)
-            <a :href="day.event.url" target="_blank">Lees verder</a>
+            <span>Lees verder</span>
         </div>
-    </div>
+    </a>
 </template>
 
 
@@ -41,6 +41,7 @@
         padding: 20px 0;
         border-bottom: 2px solid #BEBEBE;
         line-height: 1.625;
+        text-decoration: none;
 
         .event__date {
             color: $mainColor;
@@ -49,13 +50,16 @@
 
         .event__title {
             font-weight: 700;
+            color: #000;
         }
 
         .event__description {
             font-size: 16px;
+            color: #000;
 
-            a {
+            span {
                 color: $mainColor;
+                text-decoration: underline;
             }
         }
     }
