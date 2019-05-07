@@ -12,7 +12,7 @@
         },
         computed: {
             hasEvent() {
-                return this.day.event;
+                return this.day.events.length > 0;
             },
             isWeekend() {
                 return this.day.weekend;

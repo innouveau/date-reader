@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {getDaysInMonth, getDay, getDate, getMonth, getYear} from 'date-fns';
-import {dateToKey} from '@root/vue/tools';
 
 Vue.use(Vuex);
 
@@ -18,7 +17,7 @@ const getters = {
         days = [];
         month = state.months[state.currentMonthIndex];
         for (let day of month.days) {
-            if (day.event) {
+            if (day.events.length > 0) {
                 days.push(day);
             }
         }
@@ -31,7 +30,7 @@ const getters = {
         let monthIndex = 0;
         for (let month of state.months) {
             for (let day of month.days) {
-                if (day.event !== null) {
+                if (day.events.length > 0) {
                     return monthIndex;
                 }
             }
@@ -93,7 +92,7 @@ const mutations = {
                     date: date,
                     weekend: dayOfTheWeek === 6 || dayOfTheWeek === 0,
                     day: (d+1),
-                    event: null
+                    events: []
                 })
             }
 
@@ -116,7 +115,7 @@ const mutations = {
 
         for (let theMonth of state.months) {
             if (theMonth.year === year && theMonth.month === month) {
-                theMonth.days[day - 1].event = event.event;
+                theMonth.days[day - 1].events.push(event.event);
             }
         }
     },

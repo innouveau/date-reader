@@ -1,10 +1,10 @@
 <script>
-    import event from './event'
+    import dayWithEvents from './day-with-events'
 
     export default {
         name: 'events',
         components: {
-            event
+            dayWithEvents
         },
         computed: {
             eventDays() {
@@ -17,7 +17,7 @@
 
 <template>
     <div class="events">
-        <event
+        <day-with-events
             v-for="(day, index) in eventDays"
             :key="index"
             :day="day"/>

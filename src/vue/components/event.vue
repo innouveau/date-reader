@@ -3,15 +3,9 @@
     export default {
         name: 'event',
         props: {
-            day: {
+            event: {
                 type: Object,
                 required: true
-            }
-        },
-        computed: {
-            date() {
-                let month = this.$store.getters['getMonth'];
-                return this.day.day + ' ' + month.monthName;
             }
         }
     }
@@ -19,15 +13,12 @@
 
 
 <template>
-    <a class="event" :href="day.event.url">
-        <div class="event__date">
-            {{date}}
-        </div>
+    <a class="event" :href="event.url">
         <div class="event__title">
-            {{day.event.title}}
+            {{event.title}}
         </div>
         <div class="event__description">
-            {{day.event.description}} (...)
+            {{event.description}} (...)
             <span>Lees verder</span>
         </div>
     </a>
@@ -38,15 +29,7 @@
     @import '@styles/variables.scss';
 
     .event {
-        padding: 20px 0;
-        border-bottom: 2px solid #BEBEBE;
-        line-height: 1.625;
         text-decoration: none;
-
-        .event__date {
-            color: $mainColor;
-            font-weight: 700;
-        }
 
         .event__title {
             font-weight: 700;
